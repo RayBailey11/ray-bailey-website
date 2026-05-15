@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Resume — Ray Bailey</title>
+    <meta name="description" content="Resume of Ray Bailey — MIS Graduate, IT Professional based in Owasso, Oklahoma."/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            padding: 120px 60px 60px;
+            max-width: 1160px; margin: 0 auto;
+            display: flex; align-items: flex-end; justify-content: space-between;
+            gap: 32px; flex-wrap: wrap;
+        }
+        .page-header-left {}
+        .page-header h1 {
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 300; letter-spacing: -0.03em; margin-bottom: 10px;
+        }
+        .page-header h1 strong { font-weight: 500; }
+        .page-header p { font-size: 15px; color: var(--muted); }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: var(--blue); color: #fff;
+            padding: 14px 28px; border-radius: 10px;
+            font-size: 14px; font-weight: 500; text-decoration: none;
+            transition: all 0.2s; white-space: nowrap; flex-shrink: 0;
+        }
+        .download-btn:hover { background: var(--blue2); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.28); }
+        .download-icon { font-size: 16px; }
+
+        /* ── RESUME WRAP ── */
+        .resume-wrap {
+            max-width: 1160px; margin: 0 auto;
+            padding: 0 60px 96px;
+            display: grid; grid-template-columns: 280px 1fr;
+            gap: 48px; align-items: start;
+        }
+
+        /* ── SIDEBAR ── */
+        .resume-sidebar { position: sticky; top: 80px; }
+        .sidebar-card {
+            background: var(--dark);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 16px 48px rgba(12,18,34,0.12);
+        }
+        .sidebar-top {
+            background: var(--blue);
+            padding: 32px 24px; text-align: center;
+        }
+        .sidebar-avatar {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            border: 3px solid rgba(255,255,255,0.3);
+            margin: 0 auto 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px; overflow: hidden;
+        }
+        .sidebar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .sidebar-name { font-size: 17px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+        .sidebar-role { font-size: 12px; color: rgba(255,255,255,0.7); font-family: var(--mono); }
+        .sidebar-body { padding: 24px; }
+        .sidebar-section { margin-bottom: 24px; }
+        .sidebar-section:last-child { margin-bottom: 0; }
+        .sidebar-heading {
+            font-family: var(--mono); font-size: 10px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: #334766; margin-bottom: 12px;
+        }
+        .sidebar-item {
+            display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px;
+        }
+        .sidebar-item:last-child { margin-bottom: 0; }
+        .sidebar-item-icon { color: rgba(203, 213, 225); font-size: 13px; margin-top: 1px; flex-shrink: 0; }
+        .sidebar-item-text { font-size: 12px; color: #93a8c4; line-height: 1.5; }
+        .sidebar-item-text a { color: #93a8c4; text-decoration: none; }
+        .sidebar-item-text a:hover { color: #fff; }
+        .skill-pill {
+            display: inline-block;
+            background: rgba(37,99,235,0.15); color: #93c5fd;
+            border: 1px solid rgba(37,99,235,0.25);
+            font-family: var(--mono); font-size: 10px;
+            padding: 3px 9px; border-radius: 4px; margin: 3px 3px 0 0;
+        }
+
+        /* ── MAIN RESUME ── */
+        .resume-main { }
+        .resume-section { margin-bottom: 48px; }
+        .resume-section:last-child { margin-bottom: 0; }
+        .resume-section-title {
+            font-size: 13px; font-weight: 500;
+            font-family: var(--mono); letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--blue); margin-bottom: 20px;
+            padding-bottom: 12px; border-bottom: 1px solid var(--border);
+        }
+
+        /* Entry */
+        .resume-entry { margin-bottom: 28px; }
+        .resume-entry:last-child { margin-bottom: 0; }
+        .resume-entry-header {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: 16px; margin-bottom: 6px; flex-wrap: wrap;
+        }
+        .resume-entry-title { font-size: 16px; font-weight: 500; }
+        .resume-entry-date {
+            font-family: var(--mono); font-size: 11px; color: var(--muted);
+            white-space: nowrap; flex-shrink: 0; padding-top: 3px;
+        }
+        .resume-entry-sub {
+            font-size: 13px; color: var(--blue);
+            font-family: var(--mono); margin-bottom: 10px;
+        }
+        .resume-entry ul {
+            list-style: none; display: flex; flex-direction: column; gap: 6px;
+        }
+        .resume-entry ul li {
+            font-size: 13.5px; color: var(--muted); line-height: 1.65;
+            padding-left: 16px; position: relative;
+        }
+        .resume-entry ul li::before {
+            content: ''; position: absolute; left: 0; top: 9px;
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--blue-mid);
+        }
+
+        /* Skills grid in resume */
+        .skills-table {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+        }
+        .skills-row { }
+        .skills-row-label {
+            font-size: 12px; font-weight: 500; color: var(--fg);
+            margin-bottom: 8px; font-family: var(--mono);
+        }
+        .skills-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skills-pill {
+            font-family: var(--mono); font-size: 11px;
+            background: var(--blue-light); color: var(--blue);
+            border: 1px solid var(--blue-mid);
+            padding: 4px 10px; border-radius: 5px;
+        }
+
+        /* ── NOTE BAR ── */
+        .note-bar {
+            background: var(--off); border-top: 1px solid var(--border);
+            padding: 20px 60px;
+        }
+        .note-bar-inner {
+            max-width: 1160px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px; flex-wrap: wrap;
+        }
+        .note-bar p { font-size: 13px; color: var(--muted); font-family: var(--mono); }
+        .note-bar a { color: var(--blue); text-decoration: none; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .page-header { padding: 110px 24px 48px; }
+            .resume-wrap { grid-template-columns: 1fr; padding: 0 24px 72px; gap: 32px; }
+            .resume-sidebar { position: static; }
+            .note-bar { padding: 20px 24px; }
+        }
+        @media (max-width: 640px) {
+            .page-header { padding: 100px 18px 36px; }
+            .resume-wrap { padding: 0 18px 56px; }
+            .skills-table { grid-template-columns: 1fr; }
+            .note-bar { padding: 16px 18px; }
+            .note-bar-inner { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo"><span>ray</span>-bailey.com</a>
+    <ul class="nav-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html" class="active">Resume</a></li>
+        <li><a href="index.html#contact" class="nav-hire">Hire Me</a></li>
+    </ul>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header anim-up">
+    <div class="page-header-left">
+        <span class="sec-label">Resume</span>
+        <h1>Ray Bailey</h1>
+        <p>MIS Graduate · Owasso, Oklahoma · Open to IT roles nationwide</p>
+    </div>
+    <a href="/downloads/RayBailey_Resume.pdf" download="RayBailey_Resume.pdf" class="download-btn">
+        <span class="download-icon"><i class="fa-solid fa-download"></i></span>
+        Download PDF
+    </a>
+</div>
+
+<!-- RESUME CONTENT -->
+<div class="resume-wrap">
+
+    <!-- SIDEBAR -->
+    <div class="resume-sidebar anim-up-1">
+        <div class="sidebar-card">
+            <div class="sidebar-top">
+                <div class="sidebar-avatar">
+                    <img src="images/Portrait.jpg" alt="Portrait"/>
+                </div>
+                <div class="sidebar-name">Ray Bailey</div>
+                <div class="sidebar-role">IT Professional</div>
+            </div>
+            <div class="sidebar-body">
+
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">Contact</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <span class="sidebar-item-text">Owasso, Oklahoma</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-solid fa-phone"></i></span>
+                        <span class="sidebar-item-text">580-704-6761</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <span class="sidebar-item-text"><a href="mailto:raybailey101120@gmail.com">raybailey101120@gmail.com</a></span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-brands fa-github"></i></span>
+                        <span class="sidebar-item-text"><a href="https://github.com/RayBailey11" target="_blank">github.com/RayBailey11</a></span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-brands fa-linkedin"></i></span>
+                        <span class="sidebar-item-text"><a href="https://www.linkedin.com/in/raybailey26" target="_blank">linkedin.com/in/raybailey26</a></span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">Education</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <div class="sidebar-item-text">
+                            B.S. Management Information Systems<br/>
+                            Oklahoma State University<br/>
+                            GPA: 3.8 · May 2026
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-heading">Core Skills</div>
+                    <div>
+                        <span class="skill-pill">Linux</span>
+                        <span class="skill-pill">Apache</span>
+                        <span class="skill-pill">Python</span>
+                        <span class="skill-pill">C#</span>
+                        <span class="skill-pill">SQL</span>
+                        <span class="skill-pill">Git</span>
+                        <span class="skill-pill">Docker</span>
+                        <span class="skill-pill">VMware</span>
+                        <span class="skill-pill">Active Directory</span>
+                        <span class="skill-pill">PowerShell</span>
+                        <span class="skill-pill">Cloudflare</span>
+                        <span class="skill-pill">Azure DevOps</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="resume-main anim-up-2">
+
+        <!-- TECHNICAL SKILLS -->
+        <div class="resume-section">
+            <div class="resume-section-title">Technical Skills</div>
+            <div class="skills-table">
+                <div class="skills-row">
+                    <div class="skills-row-label">Programming</div>
+                    <div class="skills-pills">
+                        <span class="skills-pill">C#</span>
+                        <span class="skills-pill">Python</span>
+                        <span class="skills-pill">SQL</span>
+                        <span class="skills-pill">HTML</span>
+                        <span class="skills-pill">CSS</span>
+                        <span class="skills-pill">BASH</span>
+                        <span class="skills-pill">PowerShell</span>
+                    </div>
+                </div>
+                <div class="skills-row">
+                    <div class="skills-row-label">Infrastructure & Servers</div>
+                    <div class="skills-pills">
+                        <span class="skills-pill">Ubuntu/Linux</span>
+                        <span class="skills-pill">Windows Server</span>
+                        <span class="skills-pill">VMware</span>
+                        <span class="skills-pill">Apache</span>
+                        <span class="skills-pill">Active Directory</span>
+                        <span class="skills-pill">RDP</span>
+                    </div>
+                </div>
+                <div class="skills-row">
+                    <div class="skills-row-label">Networking</div>
+                    <div class="skills-pills">
+                        <span class="skills-pill">TCP/IP</span>
+                        <span class="skills-pill">DNS</span>
+                        <span class="skills-pill">DHCP</span>
+                        <span class="skills-pill">Subnetting</span>
+                        <span class="skills-pill">Routing</span>
+                        <span class="skills-pill">FTP/SMTP</span>
+                    </div>
+                </div>
+                <div class="skills-row">
+                    <div class="skills-row-label">Tools & Platforms</div>
+                    <div class="skills-pills">
+                        <span class="skills-pill">Git</span>
+                        <span class="skills-pill">GitHub</span>
+                        <span class="skills-pill">Docker</span>
+                        <span class="skills-pill">Azure DevOps</span>
+                        <span class="skills-pill">Tableau</span>
+                        <span class="skills-pill">Power BI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="resume-section">
+            <div class="resume-section-title">Projects</div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">Enterprise Network Infrastructure Project</div>
+                    <div class="resume-entry-date">Jan 2026 – May 2026</div>
+                </div>
+                <div class="resume-entry-sub">OSU Network Infrastructure Course</div>
+                <ul>
+                    <li>Designed and built a simulated enterprise IT environment using VMware Workstation with multiple virtual machines.</li>
+                    <li>Installed and configured Windows Server and Ubuntu, implementing Active Directory, DNS, DHCP, and FTP.</li>
+                    <li>Designed network topology and IP addressing scheme, configured subnetting and routing across multiple network segments.</li>
+                    <li>Implemented remote administration and domain authentication using RDP and Active Directory user management.</li>
+                </ul>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">OSU Collab Innovation Fund — MIS Help Desk Platform</div>
+                    <div class="resume-entry-date">Jan 2025 – May 2025</div>
+                </div>
+                <div class="resume-entry-sub">Project Manager · OSU Project Management Course</div>
+                <ul>
+                    <li>Led an 8-member team as project manager to design a mock MIS help desk and networking platform.</li>
+                    <li>Managed timelines, communication, and risk mitigation using Agile and Waterfall methodologies.</li>
+                    <li>Presented project outcomes and recommendations to faculty stakeholders.</li>
+                </ul>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">Mundane Activities Web Application</div>
+                    <div class="resume-entry-date">Aug 2024 – Dec 2024</div>
+                </div>
+                <div class="resume-entry-sub">Web Development Project</div>
+                <ul>
+                    <li>Built a front-end web app for a real music and headphone brand, including a music showcase and email sign-up form.</li>
+                    <li>Developed in HTML/CSS with SQL integration, collaborating via Azure DevOps using Agile principles.</li>
+                </ul>
+            </div>
+
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">Self-Hosted Portfolio Website</div>
+                    <div class="resume-entry-date">2026 – Present</div>
+                </div>
+                <div class="resume-entry-sub">ray-bailey.com · Personal Project</div>
+                <ul>
+                    <li>Deployed and maintain a live website on a home Ubuntu Server VM running Apache2 with zero cloud hosting.</li>
+                    <li>Secured with UFW firewall, SSH key authentication, fail2ban, and Cloudflare Tunnel with no exposed ports.</li>
+                    <li>Built an automated deploy pipeline using GitHub and WinSCP for instant file synchronisation on save.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- WORK EXPERIENCE -->
+        <div class="resume-section">
+            <div class="resume-section-title">Work Experience</div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">Bird Specialist / Certified Trainer</div>
+                    <div class="resume-entry-date">May 2020 – Present</div>
+                </div>
+                <div class="resume-entry-sub">Raising Cane's · Owasso, Oklahoma</div>
+                <ul>
+                    <li>Manage kitchen operations as a Bird Specialist, solving day-to-day problems across a fast-paced team environment.</li>
+                    <li>Certified trainer responsible for onboarding and training new team members to company standards.</li>
+                    <li>Developed strong leadership, communication, and problem-solving skills over 4+ years of consistent performance.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ACTIVITIES -->
+        <div class="resume-section">
+            <div class="resume-section-title">Activities &amp; Leadership</div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">OSU Data Analytics Club</div>
+                    <div class="resume-entry-date">Sep 2025 – May 2026</div>
+                </div>
+                <ul>
+                    <li>Collaborated with peers on real-world data analytics applications using industry tools.</li>
+                    <li>Networked with industry professionals and engaged in skill-building focused on technology in business.</li>
+                </ul>
+            </div>
+            <div class="resume-entry">
+                <div class="resume-entry-header">
+                    <div class="resume-entry-title">OSU Cowboy Marching Band — Trombone</div>
+                    <div class="resume-entry-date">Aug 2022 – Jan 2025</div>
+                </div>
+                <ul>
+                    <li>Represented Oklahoma State University performing at every home football game and select away games.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- NOTE BAR -->
+<div class="note-bar">
+    <div class="note-bar-inner">
+        <p>This is a general overview. Tailored versions available on request — <a href="mailto:raybailey101120@gmail.com">raybailey101120@gmail.com</a></p>
+        <a href="/downloads/RayBailey_Resume.pdf" download="RayBailey_Resume.pdf" class="download-btn" style="color: #fff; font-size:13px;padding:10px 20px;"><i class="fa-solid fa-download"></i>Download PDF</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <p>© 2026 Ray Bailey — Self-hosted on Ubuntu + Apache</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="https://github.com/RayBailey11">GitHub</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

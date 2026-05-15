@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>About — Ray Bailey</title>
+    <meta name="description" content="About Ray Bailey — MIS Graduate from Oklahoma State University, IT Professional based in Owasso, Oklahoma."/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            padding: 140px 60px 80px;
+            max-width: 1160px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 80px; align-items: center;
+        }
+        .page-hero-left { }
+        .page-label {
+            font-family: var(--mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
+            display: block;
+        }
+        .page-hero h1 {
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 300; line-height: 1.1;
+            letter-spacing: -0.03em; margin-bottom: 24px;
+        }
+        .page-hero h1 strong { font-weight: 500; }
+        .page-hero p {
+            font-size: 16px; color: var(--muted);
+            line-height: 1.85; margin-bottom: 16px; max-width: 480px;
+        }
+        .page-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+        /* ── PHOTO AREA ── */
+        .photo-stack {
+            position: relative;
+            height: 480px;
+        }
+        .photo-main {
+            position: absolute; top: 0; right: 0;
+            width: 85%; height: 420px;
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 24px 64px rgba(37,99,235,0.12), 0 4px 16px rgba(0,0,0,0.08);
+            background: var(--off);
+            border: 1px solid var(--border);
+        }
+        .photo-main img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .photo-secondary {
+            position: absolute; bottom: 0; left: 0;
+            width: 55%; height: 260px;
+            border-radius: 14px; overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+            border: 4px solid #fff;
+            background: var(--off);
+        }
+        .photo-secondary img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        /* placeholder when no photo */
+        .photo-placeholder {
+            width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            gap: 12px; color: var(--muted);
+            font-family: var(--mono); font-size: 12px; text-align: center;
+            padding: 20px;
+        }
+        .photo-placeholder-icon {
+            width: 48px; height: 48px; border-radius: 50%;
+            background: var(--blue-light); border: 1px solid var(--blue-mid);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px;
+        }
+
+        /* ── STATS ROW ── */
+        .stats-row {
+            background: var(--off);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 60px;
+        }
+        .stats-inner {
+            max-width: 1160px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr);
+        }
+        .stat-item {
+            text-align: center; padding: 0 20px;
+            border-right: 1px solid var(--border);
+        }
+        .stat-item:last-child { border-right: none; }
+        .stat-num {
+            font-family: var(--mono); font-size: 28px; font-weight: 500;
+            color: var(--fg); letter-spacing: -0.02em;
+        }
+        .stat-num span { color: var(--blue); }
+        .stat-lbl { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+        /* ── STORY ── */
+        .story-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;
+        }
+        .story-text h2 {
+            font-size: 28px; font-weight: 300; letter-spacing: -0.02em; margin-bottom: 20px;
+        }
+        .story-text h2 strong { font-weight: 500; }
+        .story-text p {
+            font-size: 15px; color: var(--muted); line-height: 1.85; margin-bottom: 16px;
+        }
+
+        /* ── TIMELINE ── */
+        .timeline { display: flex; flex-direction: column; gap: 0; }
+        .timeline-item {
+            display: grid; grid-template-columns: 80px 1fr;
+            gap: 24px; padding-bottom: 32px; position: relative;
+        }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-item::before {
+            content: '';
+            position: absolute; left: 39px; top: 28px; bottom: 0;
+            width: 1px; background: var(--border);
+        }
+        .timeline-item:last-child::before { display: none; }
+        .timeline-date {
+            font-family: var(--mono); font-size: 11px; color: var(--blue);
+            font-weight: 500; text-align: right; padding-top: 3px; line-height: 1.4;
+        }
+        .timeline-dot-wrap {
+            position: absolute; left: 34px; top: 4px;
+            width: 12px; height: 12px; border-radius: 50%;
+            background: var(--blue); border: 2px solid #fff;
+            box-shadow: 0 0 0 2px var(--blue-mid);
+        }
+        .timeline-body { }
+        .timeline-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+        .timeline-sub { font-size: 13px; color: var(--blue); font-family: var(--mono); margin-bottom: 6px; }
+        .timeline-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+        /* ── INTERESTS ── */
+        .interests-wrap {
+            background: var(--dark); padding: 80px 60px;
+        }
+        .interests-inner { max-width: 1160px; margin: 0 auto; }
+        .interests-inner .sec-label { color: #4d7cfe; }
+        .interests-inner .sec-title { color: #fff; margin-bottom: 40px; }
+        .interests-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .interest-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 26px; transition: all 0.22s;
+        }
+        .interest-card:hover {
+            background: rgba(37,99,235,0.1);
+            border-color: rgba(37,99,235,0.25);
+        }
+        .interest-title { font-size: 15px; font-weight: 500; color: #e2e8f0; margin-bottom: 8px; }
+        .interest-desc { font-size: 13px; color: #475569; line-height: 1.65; }
+
+        /* ── CTA ── */
+        .cta-strip {
+            background: var(--blue); padding: 72px 60px; text-align: center;
+        }
+        .cta-strip h2 {
+            font-size: 36px; font-weight: 300; color: #fff;
+            letter-spacing: -0.02em; margin-bottom: 16px;
+        }
+        .cta-strip h2 strong { font-weight: 500; }
+        .cta-strip p { font-size: 15px; color: rgba(255,255,255,0.7); margin-bottom: 32px; }
+        .cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .page-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 48px; }
+            .photo-stack { height: 340px; }
+            .photo-main { width: 90%; height: 300px; }
+            .photo-secondary { width: 50%; height: 180px; }
+            .stats-row { padding: 28px 24px; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
+            .stat-item:nth-child(2n) { }
+            .stat-item:last-child { border-bottom: none; }
+            .story-grid { grid-template-columns: 1fr; gap: 48px; }
+            .interests-wrap { padding: 60px 24px; }
+            .interests-grid { grid-template-columns: 1fr 1fr; }
+            .cta-strip { padding: 56px 24px; }
+        }
+        @media (max-width: 640px) {
+            .page-hero { padding: 100px 18px 48px; }
+            .photo-main { width: 100%; }
+            .photo-secondary { display: none; }
+            .photo-stack { height: 280px; }
+            .stats-inner { grid-template-columns: 1fr 1fr; }
+            .interests-grid { grid-template-columns: 1fr; }
+            .cta-strip h2 { font-size: 26px; }
+            .timeline-item { grid-template-columns: 60px 1fr; }
+            .timeline-item::before { left: 29px; }
+            .timeline-dot-wrap { left: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo"><span>ray</span>-bailey.com</a>
+    <ul class="nav-links">
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="index.html#skills">Skills</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="index.html#contact" class="nav-hire">Hire Me</a></li>
+    </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+    <div class="page-hero-left anim-up-1">
+        <span class="page-label">About Me</span>
+        <h1>I'm Ray,<br/><strong>Nice to meet you.</strong></h1>
+        <p>
+            I'm a Management Information Systems graduate from Oklahoma State University
+            with a 3.7 GPA, based in Owasso, Oklahoma. I'm passionate about IT infrastructure,
+            networking, and building systems that actually work reliably.
+        </p>
+        <p>
+            I don't just study technology — I run it. This website is hosted on a
+            self-managed Ubuntu server in my home, secured, automated, and maintained by me.
+        </p>
+        <div class="page-hero-btns">
+            <a href="resume.html" class="btn btn-blue">View My Resume</a>
+            <a href="index.html#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+    </div>
+
+    <div class="anim-up-2">
+        <div class="photo-stack">
+            <div class="photo-main">
+                <img src="images/RayGraduation.jpg" alt="Ray Bailey Graduation"/>
+            </div>
+            <div class="photo-secondary">
+                <img src="images/RayBailey.jpg" alt="Ray Bailey"/>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <div class="stat-num">3.8<span></span></div>
+            <div class="stat-lbl">GPA at OSU</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">6<span>+</span></div>
+            <div class="stat-lbl">Years Work Experience</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">10<span>+</span></div>
+            <div class="stat-lbl">Technical Skills</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-num">3<span>+</span></div>
+            <div class="stat-lbl">Major Projects Completed</div>
+        </div>
+    </div>
+</div>
+
+<!-- STORY -->
+<section class="section">
+    <div class="story-grid">
+        <div class="story-text">
+            <div class="sec-label">My Background</div>
+            <h2>Built for<br/><strong>hands-on IT work.</strong></h2>
+            <p>
+                Growing up I was always the person friends and family called when something
+                wasn't working. That curiosity led me to pursue a degree in Management Information
+                Systems at Oklahoma State University, where I graduated in May 2026.
+            </p>
+            <p>
+                Throughout my studies I didn't just focus on theory — I built real things.
+                Enterprise network labs, web applications, project management systems. I learned
+                how networks actually function, how servers are administered, and how to keep
+                systems secure and running.
+            </p>
+            <p>
+                Outside of class I went further — setting up this entire website on home hardware,
+                configuring Linux servers, Cloudflare tunnels, automated deploys, and proper security
+                hardening. It's the kind of experience you can't get from a textbook.
+            </p>
+        </div>
+
+        <div>
+            <div class="sec-label">Timeline</div>
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">B.S. Management Information Systems</div>
+                        <div class="timeline-sub">Oklahoma State University</div>
+                        <div class="timeline-desc">Graduated May 2026 with a 3.7 GPA. Focused on networking, infrastructure, systems analysis, and IT project management.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">Enterprise Network Infrastructure Project</div>
+                        <div class="timeline-sub">OSU Network Infrastructure Course</div>
+                        <div class="timeline-desc">Designed a full enterprise IT environment with VMware, Windows Server, Active Directory, DNS, DHCP, FTP, and multi-segment routing.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">Project Manager — MIS Help Desk Platform</div>
+                        <div class="timeline-sub">OSU Collab Innovation Fund</div>
+                        <div class="timeline-desc">Led an 8-member team to design a mock MIS help desk system. Managed timelines, risk mitigation, and presented outcomes to faculty stakeholders.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">Web Application Developer</div>
+                        <div class="timeline-sub">Mundane Activities Project</div>
+                        <div class="timeline-desc">Built a front-end web app for a real music brand using HTML, CSS, and SQL. Collaborated via Azure DevOps following Agile principles.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">OSU Cowboy Marching Band</div>
+                        <div class="timeline-sub">Oklahoma State University</div>
+                        <div class="timeline-desc">Represented OSU playing trombone at every home football game through January 2025. Discipline, teamwork, and performance under pressure.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-dot-wrap"></div>
+                    <div class="timeline-body">
+                        <div class="timeline-title">Bird Specialist / Certified Trainer</div>
+                        <div class="timeline-sub">Raising Cane's — Present</div>
+                        <div class="timeline-desc">Managing kitchen operations and training new team members. Built leadership, problem solving, and communication skills in a fast-paced environment.</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="full-divider"/>
+
+<!-- INTERESTS -->
+<div class="interests-wrap">
+    <div class="interests-inner">
+        <div class="sec-label">Beyond the Resume</div>
+        <div class="sec-title" style="color:#fff">My Motivation</div>
+        <div class="interests-grid">
+            <div class="interest-card">
+                <div class="interest-title">Home Lab & Self-Hosting</div>
+                <div class="interest-desc">Running this website on home hardware isn't just a project — it's a hobby. I enjoy building, breaking, and fixing real infrastructure.</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-title">Data & Analytics</div>
+                <div class="interest-desc">Active member of the OSU Data Analytics Club. Enjoy exploring how data can drive real business decisions using tools like Tableau and Power BI.</div>
+            </div>
+            <div class="interest-card">
+                <div class="interest-title">Music & Performance</div>
+                <div class="interest-desc">Played trombone in the OSU Cowboy Marching Band for three years — performing in front of thousands taught me discipline and how to work under pressure.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+    <h2>Ready to work<br/><strong>with someone who builds things?</strong></h2>
+    <p>I'm actively looking for my first IT role. Let's talk.</p>
+    <div class="cta-btns">
+        <a href="resume.html" class="btn btn-white">View Resume</a>
+        <a href="mailto:raybailey101120@gmail.com" class="btn btn-white">Email Me</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-inner">
+        <p>© 2026 Ray Bailey — Self-hosted on Ubuntu + Apache</p>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="resume.html">Resume</a>
+            <a href="https://github.com/RayBailey11">GitHub</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
